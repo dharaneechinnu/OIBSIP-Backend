@@ -137,10 +137,6 @@ router.post('/reg/verify-otp', async (req, res) => {
 router.route('/login').post(async(req, res) => {
     try {
         const { email, password } = req.body;
-        if (!email || !password) {
-            return res.json("Enter all fields");
-        }
-
         const user = await usermodel.findOne({ email });
         if (!user) {
             return res.json("User not found");
